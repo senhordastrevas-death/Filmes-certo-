@@ -19,6 +19,15 @@ header a{
 	color: white;
 	text-decoration: none;
 }
+header a:hover{
+    color: red;
+}
+header a:active{
+    color: green;
+}
+header a:visited{
+    color: orange;
+}
 main .slide{
 	background: url("imagens/banner-principal.png");
 	width: 100%;
