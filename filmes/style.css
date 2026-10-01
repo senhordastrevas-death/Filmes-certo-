@@ -163,8 +163,13 @@ footer .logo ul li a:hover{
     color: red;
     font-size: 25px;
 }
-
-
+.dropdown-content{
+	display: none;
+}
+.dropdown:hover .dropdown-content{
+	display: flex;
+	flex-direction: column;
+} 
 
 
 
