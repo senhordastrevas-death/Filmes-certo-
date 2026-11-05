@@ -1,10 +1,14 @@
+<?php
+    include('conexao.php');
+?>
+
 <link rel="stylesheet" href="style.css">
 <ul>
     <li><a href="categoria.html">Categoria</a></li>
     <li><a href="filmes.html">Filmes</a></li>
 </ul>
 <main id="categoria">
-    <form>
+    <form method="get">
         <h2>Categoria</h2>
         <input type="text" name="categoria" placeholder="Nome Categoria...">
         <button name="salvar">Salvar</button>
@@ -12,5 +16,8 @@
 </main>
 
 <?php
-    echo $_GET['categoria'];
+
+    if(isset($_GET['salvar'])){
+        $nomeCategoria = $_GET['categoria'];
+    }
 ?>
