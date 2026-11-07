@@ -19,5 +19,13 @@
 
     if(isset($_GET['salvar'])){
         $nomeCategoria = $_GET['categoria'];
+
+        $sql = "INSERT INTO categoria (nome) values ('$nomeCategoria')";
+
+        if($conn->query($sql)){
+            echo "Gravou com sucesso";
+        }else{
+            echo "Deu ruim";
+        }
     }
 ?>
