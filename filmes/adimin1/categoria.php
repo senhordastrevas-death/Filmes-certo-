@@ -28,4 +28,9 @@
             echo "Deu ruim";
         }
     }
+
+    $sql = "selec * from categoria";
+    $resultado = $conn->query($sql);
+    
+
 ?>
