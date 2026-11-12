@@ -31,6 +31,10 @@
 
     $sql = "selec * from categoria";
     $resultado = $conn->query($sql);
-    
+
+    while ($obj = $resultado->fetch_assoc()) {
+        echo $obj['id']." - ";
+        echo $obj['nome']."<BR>";
+    }
 
 ?>
