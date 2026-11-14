@@ -10,7 +10,18 @@
 <main id="categoria">
     <form method="get">
         <h2>Categoria</h2>
-        <input type="text" name="categoria" placeholder="Nome Categoria...">
+
+        <?php
+        if(isset($_GET['editar'])) and $_GET['editar'] != NULL{
+            $id_categoria = $_GET['editar'];
+            $sql = "select * from categoria where id = $id_categoria";
+
+            $resultado = $conn->query($sql);
+            $obj = $resultado->fetch_assoc();
+        }
+        ?>
+
+        <input type="text" name="categoria" placeholder="Nome Categoria..." value-"<?php echo $obj['nome'] ?>">
         <button name="salvar">Salvar</button>
     </form>
 </main>
@@ -29,7 +40,6 @@
         }
     }
 
-    /*phpMyAdimin*/
     $sql = "selec * from categoria";
     $resultado = $conn->query($sql);
 
@@ -37,6 +47,7 @@
         echo $obj['id']." - ".$obj['nome']."<a href='?editar=".$obj['id']."'>Editar</a><br>";
     }
 
+     /*phpMyAdimin*/
     if(isset($_GET['editar'])){
         echo "entrou, lá ele";
     }
