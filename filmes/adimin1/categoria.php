@@ -8,7 +8,9 @@
     <li><a href="filmes.html">Filmes</a></li>
 </ul>
 <main id="categoria">
-    <form method="get">
+    <form method="get" action="
+    <?php  $editar = (isset($_GET['editar']))? "?editar=" .$_GET['editar']."&salvar" : "";?>
+    ">
         <h2>Categoria</h2>
         <input type="text" name="categoria" placeholder="Nome Categoria...">
         <button name="salvar">Salvar</button>
@@ -16,25 +18,34 @@
 </main>
 
 <?php
+		/*Inserir dados na tabela categoria*/
+	if(isset($_GET['salvar'])){
+		$nomeCategoria = $_GET['categoria'];
 
-    if(isset($_GET['salvar'])){
-        $nomeCategoria = $_GET['categoria'];
+		 $sql = "INSERT INTO categoria (nome) values ('$nomeCategoria')";
 
-        $sql = "INSERT INTO categoria (nome) values ('$nomeCategoria')";
+		 if($conn->query($sql)){
+		 	echo "Gravou com sucessooooooooooo!";
+		 }else {
+		 	echo "Deu ruim";
+		 }
+	}
 
-        if($conn->query($sql)){
-            echo "Gravou com sucesso";
-        }else{
-            echo "Deu ruim";
-        }
-    }
 
-    $sql = "selec * from categoria";
-    $resultado = $conn->query($sql);
 
-    while ($obj = $resultado->fetch_assoc()) {
-        echo $obj['id']." - ";
-        echo $obj['nome']."<BR>";
-    }
+ $sql = "SELECT * FROM categoria";
+	$resultado = $conn->query($sql);
+
+	while ($obj = $resultado->fetch_assoc()) {
+		echo $obj['id']." - ".$obj['nome'].
+		"<a href='?editar=".$obj['id']."'>Editar</a><br>";
+
+	}
+	
+	/*Editar uma categoria*/
+	if(isset($_GET['editar']) and isset($_GET['salvar'])){
+		echo "Entrou aqui";
+	}
+
 
 ?>
