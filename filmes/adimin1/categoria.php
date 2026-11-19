@@ -9,10 +9,12 @@
 </ul>
 <main id="categoria">
     <form method="get" action="
-    <?php  $editar = (isset($_GET['editar']))? "?editar=" .$_GET['editar']."&salvar" : "";?>
+    <?php  $editar = (isset($_GET['editar'])) ? "?editar=" .$_GET['editar']."&salvar" : "";?>
     ">
         <h2>Categoria</h2>
-        <input type="text" name="categoria" placeholder="Nome Categoria...">
+        <input type="text" name="categoria" placeholder="Nome Categoria..." value="<?php echo isset($obj['nome'])? $obj['nome'] : "" ?>">
+		<input type="hidden" name="editar" value="<?php echo isset($_GET['editar'])? $_GET['editar'] : ""; ?>">
+
         <button name="salvar">Salvar</button>
     </form>
 </main>
